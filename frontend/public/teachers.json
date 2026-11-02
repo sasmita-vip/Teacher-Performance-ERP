@@ -1,0 +1,13 @@
+
+[
+  {
+    "id": 1,
+    "name": "Dr. Aris Thorne",
+    "department": "Computer Science"
+  },
+  {
+    "id": 2,
+    "name": "Prof. Elena Rostova",
+    "department": "Mathematics"
+  }
+]

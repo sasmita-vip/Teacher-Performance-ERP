@@ -1,0 +1,38 @@
+<div class="analytics-container">
+  <h2>Teacher Performance Analytics Dashboard</h2>
+  
+  <div class="dropdown-wrapper">
+    <label for="teacherSelect">Select Teacher Name: </label>
+    <select 
+      id="teacherSelect" 
+      [(ngModel)]="selectedTeacherId" 
+      (change)="onTeacherChange()">
+      <option [ngValue]="null" disabled>-- Select a Teacher from List --</option>
+      <option *ngFor="let teacher of teachersList" [ngValue]="teacher.id">
+        {{ teacher.name }}
+      </option>
+    </select>
+  </div>
+  <div class="charts-grid" *ngIf="barData && lineData">
+    <div class="chart-box">
+      <h3>Term Performance Progression (Bar Chart)</h3>
+      <div class="canvas-wrapper">
+        <canvas baseChart [data]="barData" [options]="chartOptions" type="bar"></canvas>
+      </div>
+    </div>
+    
+    <div class="chart-box">
+      <h3>Term Performance Chart (Line Graph)</h3>
+      <div class="canvas-wrapper">
+        <canvas baseChart [data]="lineData" [options]="chartOptions" type="line"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="ai-remarks-section" [ngClass]="{
+    'state-neutral': performanceState === 'neutral',
+    'state-improved': performanceState === 'improved',
+    'state-de-improved': performanceState === 'de-improved'
+  }">
+    <div class="remarks-text" [innerHTML]="remarks"></div>
+  </div>
+</div>
